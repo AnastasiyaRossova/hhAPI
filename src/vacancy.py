@@ -2,12 +2,14 @@ from abc import ABC, abstractmethod
 
 
 class AbstractVacancy(ABC):
+    """Абстрактрый класс для вакансий"""
     @abstractmethod
     def cast_to_object_list(cls, vacancies: list[dict]) -> list:
         return None
 
 
 class Vacancy:
+    """Класс для вакансий"""
     def __init__(self, _id, salary_from, salary_to, name, area,
                  employer_name, requirement, json):
         self._id = _id
@@ -40,6 +42,7 @@ class Vacancy:
 
     @classmethod
     def cast_to_object_list(cls, vacancies: list[dict]) -> list:
+        """Преобразование списка в список вакансий"""
         vacancies_list = []
         for vacancy in vacancies:
             new_vacancy = Vacancy(

@@ -21,6 +21,7 @@ def search(search_query):
 
 
 def filter_vacancies(vacancies_list, filter_words):
+    """Фильтр результатов поиска по ключевым словам"""
     if filter_words:
         filter_words = [x.lower() for x in filter_words]
         filtered_vacancies = []
@@ -32,6 +33,7 @@ def filter_vacancies(vacancies_list, filter_words):
 
 
 def get_vacancies_by_salary(filtered_vacancies, min_range):
+    """Фильтр результатов поиска по минимальной зарплате"""
     ranged_vacancies = []
     for vacancy in filtered_vacancies:
         if vacancy.salary_to:
@@ -41,20 +43,24 @@ def get_vacancies_by_salary(filtered_vacancies, min_range):
 
 
 def sort_vacancies(ranged_vacancies):
+    """Сортировка по зарплате"""
     return sorted(ranged_vacancies, key=lambda vacancy: vacancy.salary_to, reverse=True)
 
 
 def get_top_vacancies(sorted_vacancies, top_n):
+    """Фильтровать первые N ваканский"""
     return sorted_vacancies[:top_n]
 
 
 def print_vacancies(top_vacancies):
+    """Показать вакансии"""
     for vacancy in top_vacancies:
         print(repr(vacancy))
 
 
 # Функция для взаимодействия с пользователем
 def user_interaction():
+    """Вывод в консоль параметры поиска"""
     search_query = input("Введите поисковый запрос: ")
     vacancies_list = search(search_query)
     top_n = int(input("Введите количество вакансий для вывода в топ N: "))

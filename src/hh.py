@@ -22,6 +22,7 @@ class HeadHunterAPI(Parser):
         self.vacancies = []
 
     def load_vacancies(self, keyword):
+        """Загрузить вакансии"""
         self.params['text'] = keyword
         while self.params.get('page') != 2:
             response = requests.get(self.url, headers=self.headers, params=self.params)
