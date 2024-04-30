@@ -62,10 +62,16 @@ def print_vacancies(top_vacancies):
 def user_interaction():
     """Вывод в консоль параметры поиска"""
     search_query = input("Введите поисковый запрос: ")
+    if not search_query:
+        print("Запрос пуст")
+        exit(1)
     vacancies_list = search(search_query)
     top_n = int(input("Введите количество вакансий для вывода в топ N: "))
     filter_words = input("Введите ключевые слова для фильтрации вакансий: ").split()
     min_range = int(input("Введите минимальную зарплату: "))  # Пример: 100000
+    if not top_n or not filter_words or not min_range:
+        print("Фильтрация не действительна")
+        exit(1)
 
     filtered_vacancies = filter_vacancies(vacancies_list, filter_words)
     ranged_vacancies = get_vacancies_by_salary(filtered_vacancies, min_range)
