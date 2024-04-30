@@ -46,11 +46,11 @@ class Vacancy:
         vacancies_list = []
         for vacancy in vacancies:
             new_vacancy = Vacancy(
-                vacancy.get("_id"),
+                vacancy.get("id"),
                 vacancy.get("salary").get("from") if vacancy.get("salary") else "",
                 vacancy.get("salary").get("to") if vacancy.get("salary") else "",
                 vacancy.get("name"),
-                vacancy.get("area"),
+                vacancy.get("area") if vacancy.get("salary") else "",
                 vacancy.get("employer").get("name") if vacancy.get("employer") else "",
                 vacancy.get("requirement") if vacancy.get("requirement") else "",
                 vacancy
