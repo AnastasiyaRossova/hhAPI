@@ -34,6 +34,10 @@ class Vacancy:
     def __repr__(self):
         return f'Вакансия [{self._id}] {self._name}: {self._name}'
 
+    def __eq__(self, other):
+        if isinstance(other, Vacancy):
+            return self._salary_to == other._salary_to
+
     @classmethod
     def cast_to_object_list(cls, vacancies: list[dict]) -> list:
         vacancies_list = []

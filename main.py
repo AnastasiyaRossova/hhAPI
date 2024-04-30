@@ -11,7 +11,6 @@ def search(search_query):
     hh_api.load_vacancies(search_query)
     # Преобразование набора данных из JSON в список объектов
     vacancies_list = Vacancy.cast_to_object_list(hh_api.vacancies)
-    print(vacancies_list)
     # Сохранение информации о вакансиях в файл
     json_saver = JSONSaver()
     for vacancy in vacancies_list:
